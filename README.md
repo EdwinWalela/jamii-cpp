@@ -1,7 +1,7 @@
 # Jamii Chain
 
 ## Inspiration
-Bitcoin's Implementation of a trust-based peer-to-peer network  
+[Bitcoin's Implementation](https://bitcoin.org/bitcoin.pdf) of a trust-based peer-to-peer network  
 ## Goal
 To implement an educational peer-to-peer transparent blockchain network. 
 
