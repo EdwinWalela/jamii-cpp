@@ -6,7 +6,7 @@
 To implement an educational peer-to-peer transparent blockchain network. 
 
 ## Compiler
-GCC version ```7.4.0```
+```GCC version 7.4.0```
 
 ## Installation
 1. Clone into ```jamii-chain```
