@@ -8,4 +8,3 @@ int main(){
 
     std::cout<<"jamii genesis transaction hash:"<<genessis_trans_hash;
 }
-
