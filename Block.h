@@ -12,21 +12,34 @@ class Block{
 
         std::vector<Transaction> tx;
         Block();
-        void hashBlock();
+        void hash_block();
+        bool isHashValid();
 };
 
 Block::Block(){
     timestamp = time(NULL);
 }
 
-void Block::hashBlock(){
+bool Block::isHashValid() {
+	for (int i = 0; i < DIFF;i++) {
+		if (hash.at(i) == '0') {
+			continue;
+		}else {
+			return false;
+		}
+	}
+	return true;
+}
+
+void Block::hash_block(){
     std::string txs_hash;
-    
     for (int i = 0; i < tx.size(); i++)
     {
         txs_hash += tx.at(i).hash;
     }
-    
     hash = Crypto::SHA256Hash(txs_hash+std::to_string(nonce)+prev_hash);
-    nonce++;
+    while(!isHashValid()){
+        hash = Crypto::SHA256Hash(txs_hash+std::to_string(nonce)+prev_hash);
+        nonce++;
+    }
 }
