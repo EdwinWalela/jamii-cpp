@@ -9,6 +9,10 @@ To implement an peer-to-peer transparent blockchain network.
 ```GCC version 7.4.0```
 
 ## Installation
-1. Clone into ```jamii-chain```
+1. Clone into ```jamii```
 2. Compile ```g++ chain.cpp -o jamii.exe```
 3. Run ```jamii```
+
+
+## Guide 
+Coming Soon

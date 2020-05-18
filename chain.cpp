@@ -4,7 +4,7 @@
 
 int main(){
     Chain jamii = Chain();
-    Transaction new_tx = Transaction("from","to",50.000);
+    Transaction new_tx = Transaction("jamii","jamii",50.000);
     jamii.add_tx(new_tx);
     std::cout<<"Mining block (Dificulty="<<DIFF<<")"<<std::endl;
     int nonce = jamii.mine_block();
