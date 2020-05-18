@@ -6,7 +6,7 @@
 class Block{
     public:
         long int timestamp;
-        int nonce;
+        long int nonce = 0;
         std::string prev_hash;
         std::string hash;
 
@@ -21,11 +21,12 @@ Block::Block(){
 
 void Block::hashBlock(){
     std::string txs_hash;
+    
     for (int i = 0; i < tx.size(); i++)
     {
         txs_hash += tx.at(i).hash;
     }
     
     hash = Crypto::SHA256Hash(txs_hash+std::to_string(nonce)+prev_hash);
-    
+    nonce++;
 }

@@ -9,8 +9,8 @@ class Chain{
         std::vector<Transaction> pending_tx;
         Chain();
         Block latestBlock();
-        void add_block(Block);
-        void add_pending_tx(Transaction);
+        void add_tx(Transaction);
+        int mine_block();
 };
 
 Chain::Chain(){
@@ -26,16 +26,23 @@ Block Chain::latestBlock(){
     return chain.at(chain.size()-1);
 }
 
-void Chain::mine_block(){
-    while(pending_tx.size()>1){
-        for (int i = 0; i < pending_tx.size(); i++)
-        {
-            // this->pending_tx.
-        }
-        
-    }
+void Chain::add_tx(Transaction tx){
+    pending_tx.push_back(tx);
 }
 
-void Chain::add_pending_tx(Transaction tx){
-    pending_tx.push_back(tx);
+int Chain::mine_block(){
+    Block blk;
+    if(chain.size()==0){
+        blk.prev_hash = "00000000";
+    }
+    if(pending_tx.size()>1){
+        blk.tx = pending_tx;
+        pending_tx.empty();
+    }
+
+    while(blk.hash.substr(0,5) != "00000"){
+        blk.hashBlock();
+    }
+    chain.push_back(blk);
+    return blk.nonce;
 }
