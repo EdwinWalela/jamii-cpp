@@ -1,5 +1,4 @@
-#include <string.h>
-// Override std::string highlighting in vscode 
+#include <string>
 #include <vector> 
 #include "crypto.h"
 
@@ -23,5 +22,6 @@ Transaction::Transaction(std::string _from,std::string _to, float _value){
 }
 
 void Transaction::hash_tx(){
-    hash = CryptoHash::SHA256Hash(from+to+std::to_string(value));
+    hash = Crypto::SHA256Hash(from+to+std::to_string(value));
 }
+
