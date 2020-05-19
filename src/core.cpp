@@ -1,6 +1,6 @@
 #define DIFF 5
 #include <iostream>
-#include "Chain.h"
+#include "./Chain/Chain.h"
 
 int main(){
     Chain jamii = Chain();

@@ -1,5 +1,5 @@
 #include <string>
-#include "picosha2.h"
+#include "../../include/picosha2.h"
 
 class Crypto{
     public:
