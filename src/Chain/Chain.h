@@ -20,13 +20,9 @@ Chain::Chain(){
 
 Block Chain::create_genesis(){
     Block genesis = Block();
-    // std::cout<<"1"<<std::endl;
     genesis.tx.push_back(Transaction("0","miner",50.000));
-    // std::cout<<"2"<<std::endl;
     genesis.prev_hash = Crypto::SHA256Hash("Jamii Chain");
-    // std::cout<<"3"<<std::endl;
     genesis.hash_block();
-    // std::cout<<"4"<<std::endl;
     return genesis;
 }
 
@@ -41,11 +37,17 @@ void Chain::add_tx(Transaction tx){
 int Chain::mine_block(){
     Block blk;
     if(pending_tx.size()>0){
-        blk.tx = pending_tx;
+        Transaction coinBase = Transaction("","miner",REWARD);
+        blk.tx.push_back(coinBase);
+        // Concat pending txs with coinbase
+        blk.tx.insert(blk.tx.end(),pending_tx.begin(),pending_tx.end());
+        // Empty pending txs
         pending_tx.empty();
     }
-
+    // Calculate block's hash
     blk.hash_block();
+    // Add block to chain
+    blk.prev_hash = latestBlock().hash;
     chain.push_back(blk);
     return blk.nonce;
 }

@@ -7,13 +7,17 @@ class Block{
     public:
         long int timestamp;
         long int nonce = 0;
+        float tx_volume;
+        int height;
         std::string prev_hash;
         std::string hash;
+        std::string merkle_root; // TODO
 
         std::vector<Transaction> tx;
         Block();
         void hash_block();
         bool isHashValid();
+        float sum_volume();
 };
 
 Block::Block(){
@@ -31,7 +35,17 @@ bool Block::isHashValid() {
 	return true;
 }
 
+float Block::sum_volume(){
+    float vol;
+    for (int i = 0; i < tx.size(); i++)
+    {
+        vol += tx.at(i).value;
+    }
+    return vol;
+}
+
 void Block::hash_block(){
+    tx_volume = sum_volume();
     std::string txs_hash;
     for (int i = 0; i < tx.size(); i++)
     {
@@ -42,4 +56,5 @@ void Block::hash_block(){
         hash = Crypto::SHA256Hash(txs_hash+std::to_string(nonce)+prev_hash);
         nonce++;
     }
+    
 }
