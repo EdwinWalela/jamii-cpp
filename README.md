@@ -66,4 +66,4 @@ Third party libraries
 - [ ] Unit Tests
 
 ## Contribution
-Open to anyone. Create a pull request
+Open to anyone. Simple create a pull request. :)
