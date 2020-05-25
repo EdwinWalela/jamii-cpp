@@ -63,3 +63,7 @@ Third party libraries
 - [ ] Blockchain validity verification
 - [ ] Signing transactions (Elliptic Curve)
 - [ ] Merkle Trees 
+- [ ] Unit Tests
+
+## Contribution
+Open to anyone. Create a pull request
