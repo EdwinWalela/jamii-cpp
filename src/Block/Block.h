@@ -25,6 +25,7 @@ Block::Block(){
 }
 
 bool Block::isHashValid() {
+// 	Hash needs to start with 4 Zeros (DIFF = 4)
 	for (int i = 0; i < DIFF;i++) {
 		if (hash.at(i) == '0') {
 			continue;
